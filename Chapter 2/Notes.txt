@@ -1,0 +1,8 @@
+Chapter 2 Core Defense Mechanisms
+Most web apps use a combination of: authentication, session management, and access controls to handle user access. Because these three are so interdependent, a defect in any one component can compromise the entire application, allowing someone to gain unauthorised and unrestricted access. 
+
+When attacking a web app you should invest a significant amount of time to investigating its authentication related functions (login systems)
+
+Web apps use tokens to keep track of each users session. The token is sent in each HTTP request so that the app can associate the request with the user. 
+
+It is not enough to only consider user input as potentially dangerous. User input will typically be passed from role to role so even if it was safe at the beginning it can become malicious at a later stage. Therefore, all input must be considered potentially dangerous. 
