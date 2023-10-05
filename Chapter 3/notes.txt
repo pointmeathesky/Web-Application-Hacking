@@ -1,0 +1,47 @@
+Chapter 3 Web Application Technologies
+
+HTTP
+The first line of HTTP requests contains 3 things:
+The HTTP method (usually GET or POST)
+The URL being requested
+The HTTP version (can be 1, 1.1, 2, or 3)
+HTTP 2 is what is mainly used now
+
+The first line of HTTP responses contain 3 things
+HTTP version
+Status code
+A reason phrase that describes the status of the response (eg status code 200, reason phrase “ok”) this field is not used for any purpose by current browsers
+
+Other HTTP methods
+HEAD
+Works the same as GET but the server does not return a message body. It still returns the same headers as it would for a GET request so HEAD can be used to check if a resource is present before make a GET request for it
+
+TRACE
+Designed for diagnostics. The server should return the exact contents of the request message it received in its response body. TRACE can be used to detect the effect of any proxy servers between the client and server that may manipulate the request. Eg. check if the message returned is the same as what was sent
+
+OPTIONS
+This method asks the server to return all HTTP methods that are available for a resource.
+
+PUT
+This method attempts to upload the body of the request to the server. IF PUT is enabled it can potentially be used to leverage an attack against the application such as by uploading an arbitrary script that executes on the server.
+
+
+URLS
+The format of a URL is: 
+protocol :// hostname [:port] / [/path] file [?param=value]
+Some of the components are optional. Usually, port numbers are only included if it is different from the default port used by the relevant protocol. 
+
+URL Encoding 
+%3d : =
+%25 : %
+%20 : space
+%0a : ne arew line
+%00 : null byte 
+
+When attacking web apps the following characters should always be URL encoded when they are beijing inserted as data into an HTTP request:
+Space, %, ?, &, =, ;, +, #
+
+Unicode encoding can sometimes be used to defeat input validation mechanisms
+
+When searching for cross site scripting vulnerabilities one way to detect if a web app is vulnerable is if user input is returned unmodified. If it is, the web app is probably vulnerable. However, if input is returned HTML encoded, the app may be safe.
+
